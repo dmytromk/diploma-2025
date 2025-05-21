@@ -1,0 +1,8 @@
+{
+  "bucket_id": "prod-vmart-redshift-analytics",
+  "target_table_dataset": "reference",
+  "target_table_name": "exchange_rate",
+  "start_date": "AUTO",
+  "end_date": "AUTO",
+  "target_column_names": ["date", "usd_to_eur", "usd_to_gbp", "usd_to_mxn"]
+}

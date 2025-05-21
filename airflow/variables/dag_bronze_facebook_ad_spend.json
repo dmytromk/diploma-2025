@@ -1,0 +1,81 @@
+{
+  "bucket_id": "obrio-data-platform-ad-managers-lake",
+  "source_folder": "ad_manager_spend/facebook/ad_spends",
+  "lambda_function": "analytics-marketing-cost-facebook",
+
+  "account_ids": {
+      "accounts": [
+        "484580472532554",
+        "3297160103729476",
+        "1025902707887441",
+        "202968981837728",
+        "572051477062076",
+        "523494339029435",
+        "965981384134142",
+        "169648071676942",
+        "185641553300867",
+        "398117054546210",
+        "799865847572013",
+        "630958058294368",
+        "317274406458353",
+        "165044038916239",
+        "412992076425957",
+        "776772259681491",
+        "1137960314058206",
+        "7536156669763508",
+        "450535350961805",
+        "2440589219665544",
+        "1350115982400442",
+        "955492741852919",
+        "852482462030518",
+        "1599576620634784",
+        "746963950960526",
+        "1649710865611339",
+        "511015835351801",
+        "1570687286632482"
+      ],
+      "social_facebook": [
+        "513065079863824",
+        "986995711842770",
+        "232821565171499",
+        "153923442870967",
+        "410845626929936"
+      ],
+      "chat_capi": [
+        "707780706799158"
+      ],
+      "brand": [
+        "377262670133367"
+      ],
+      "ad_quantum": [
+        "417544893858984",
+        "664249288270697"
+      ]
+    },
+
+  "api_load_timedelta": "AUTO",
+  "datalake_load_starting_date": "AUTO",
+
+  "table_name": "facebook_ad_spend",
+  "target_column_names": [
+    "date_stop",
+    "account_id",
+    "account_name",
+    "campaign_id",
+    "campaign_name",
+    "adset_id",
+    "adset_name",
+    "ad_id",
+    "ad_name",
+    "spend",
+    "account_currency",
+    "impressions",
+    "clicks",
+    "country",
+    "video_p25_watched_actions",
+    "video_p50_watched_actions",
+    "video_p75_watched_actions",
+    "video_p100_watched_actions",
+    "media_source"
+  ]
+}

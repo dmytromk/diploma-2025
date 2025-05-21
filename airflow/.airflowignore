@@ -1,0 +1,7 @@
+dag_bronze_vertica_user.py
+dag_bronze_vertica_paypal_dispute.py
+dag_bronze_vertica_payments_fee.py
+dag_bronze_vertica_card_fraud.py
+dag_bronze_vertica_card_chargeback.py
+dag_vertica_users_with_3ds_flow.py
+dag_qa_payments.py

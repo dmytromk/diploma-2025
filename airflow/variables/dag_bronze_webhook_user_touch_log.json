@@ -1,0 +1,56 @@
+{
+  "source_bucket_id": "obrio-flux-events-prod",
+  "target_bucket_id": "prod-vmart-redshift-analytics",
+  "mappings": [
+    {
+      "source_s3_path": "web/events/users",
+      "source_incremental_column": "event_time",
+      "source_column_names": [
+        "event_id",
+        "event_time",
+        "event_created_at",
+        "event_data"
+      ],
+      "load_starting_date": "AUTO",
+      "target_table_dataset": "bronze",
+      "target_table_name": "webhook_web_user_registration_log",
+      "target_column_names": [
+        "app_name",
+        "event_id",
+        "event_time",
+        "event_created_at",
+        "user_id",
+        "nebula_id",
+        "token",
+        "action",
+        "gender",
+        "zodiac_sign",
+        "partner_gender",
+        "partner_sign",
+        "country",
+        "locale",
+        "email",
+        "media_source",
+        "campaign",
+        "campaign_id",
+        "adset_id",
+        "ad_id",
+        "birth_date",
+        "quiz",
+        "user_agent",
+        "placement",
+        "associated_id",
+        "associate_id",
+        "ip",
+        "appnebula_user_id",
+        "appnebula_quiz",
+        "utm_medium",
+        "iterable_message_id",
+        "seo_referrer",
+        "seo_channel",
+        "seo_landing_page",
+        "delivery_id"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "bucket_id": "prod-vmart-redshift-analytics",
+  "lambda_function": "analytics-process-solid-payment",
+  "mappings": {
+    "apm": {
+      "time_delta": "AUTO",
+      "target_table_dataset": "bronze",
+      "target_table_name": "solid_api_apm_order",
+      "source_incremental_column": "updated_at",
+      "granularity_hours":  24,
+      "fields": ["order_id", "order_description", "created_at", "updated_at", "method", "amount", "currency", "processing_amount", "processing_currency", "status", "customer_account_id", "customer_email", "ip_address", "geo_country", "error_code", "transactions"],
+      "non_fingerprint_fields": [],
+      "merchants": ["nebula_paypal", "appnebula_2021", "nebula-palmistry", "nebula_natal_chart", "nebula_witch_power", "nebula_spiritual", "nebula_chakra", "nebula_numerology", "nebula_healing", "nebula_dreaming", "asknebula_old", "nebula_destiny", "obrio_mobile", "obrio_android", "asknebula_android", "obrio_mobile_new"]
+    },
+    "card": {
+      "time_delta": "AUTO",
+      "target_table_dataset": "bronze",
+      "target_table_name": "solid_api_card_order",
+      "source_incremental_column": "updated_at",
+      "granularity_hours":  24,
+      "fields": ["order_id", "order_description", "psp_order_id", "provider_payment_id", "created_at", "updated_at", "amount", "currency", "processing_amount", "processing_currency", "status", "payment_type", "type", "is_secured", "routing", "customer_account_id", "customer_email", "customer_first_name", "customer_last_name", "ip_address", "mid", "traffic_source", "platform", "geo_country", "error_code", "transactions", "order_metadata"],
+      "non_fingerprint_fields": ["is_secured"],
+      "merchants": ["appnebula_2021", "nebula_card", "nebula-palmistry", "nebula_natal_chart", "nebula_witch_power", "nebula_spiritual", "nebula_chakra", "nebula_numerology", "nebula_healing", "nebula_dreaming", "asknebula_old", "nebula_destiny", "obrio_mobile", "obrio_android", "asknebula_android", "obrio_mobile_new"]
+    },
+    "subscription": {
+      "time_delta": "AUTO",
+      "target_table_dataset": "bronze",
+      "target_table_name": "solid_api_subscription_order",
+      "source_incremental_column": "processed_at",
+      "granularity_hours":  0.5,
+      "fields": ["id", "status", "created_at", "processed_at", "amount", "operation", "retry_attempt", "payment_details", "subscription", "customer", "product", "invoice", "pause"],
+      "non_fingerprint_fields": ["created_at", "processed_at", "amount", "operation", "retry_attempt", "payment_details", "subscription", "customer", "product", "invoice", "pause"],
+      "merchants": ["nebula_paypal", "appnebula_2021", "nebula_card", "nebula-palmistry", "nebula_natal_chart", "nebula_witch_power", "nebula_spiritual", "nebula_chakra", "nebula_numerology", "nebula_healing", "nebula_dreaming", "asknebula_old", "nebula_destiny", "obrio_mobile", "obrio_android", "asknebula_android", "obrio_mobile_new"]
+    }
+  }
+}

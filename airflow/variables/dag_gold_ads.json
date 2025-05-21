@@ -1,0 +1,9 @@
+{
+  "facebook_time_delta": "AUTO",
+  "google_time_delta": "AUTO",
+  "tiktok_time_delta": "AUTO",
+  "apple_time_delta": "AUTO",
+  "pinterest_time_delta": "AUTO",
+  "bing_time_delta": "AUTO",
+  "vertica_time_delta": "AUTO"
+}

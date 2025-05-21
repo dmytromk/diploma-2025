@@ -1,0 +1,35 @@
+{
+  "bucket_id": "prod-vmart-redshift-analytics",
+  "mappings": [
+    {
+      "source_table_dataset": "nebula",
+      "source_table_name": "users",
+      "source_incremental_column": "updated_at",
+      "source_incremental_date": "AUTO",
+      "target_table_dataset": "bronze",
+      "target_table_name": "product_users",
+      "target_key_columns": ["id"],
+      "target_column_names": ["id", "zodiac_id", "birth_day", "birth_time", "name", "birth_place", "coordinates", "short_info", "onesignal_id", "gender", "relationship", "zodiac_prefer", "interests", "send_push", "time_for_push", "utc", "time_for_push_by_utc", "created_at", "updated_at", "deleted_at", "device_idfa", "device_idfv", "device_appsflyer_id", "start_version", "local", "platform", "synced_at", "uuid", "extra_data", "created_by_id", "is_full", "specialist_id", "is_anonymous", "member_type", "firebase_app_instance_id", "media_source", "init_country", "is_fraud", "web_funnel", "web_source"]
+    },
+    {
+      "source_table_dataset": "nebula",
+      "source_table_name": "phone",
+      "source_incremental_column": "updated_at",
+      "source_incremental_date": "AUTO",
+      "target_table_dataset": "bronze",
+      "target_table_name": "product_phone",
+      "target_key_columns": ["id"],
+      "target_column_names": ["id", "user_id", "number", "created_at", "updated_at"]
+    },
+    {
+      "source_table_dataset": "nebula",
+      "source_table_name": "email_user",
+      "source_incremental_column": "updated_at",
+      "source_incremental_date": "AUTO",
+      "target_table_dataset": "bronze",
+      "target_table_name": "product_email_user",
+      "target_key_columns": ["id"],
+      "target_column_names": ["id", "user_id", "mail_fire_id", "name", "gender", "birth_date", "platform", "extra_data", "created_at", "updated_at", "active_email"]
+    }
+  ]
+}
