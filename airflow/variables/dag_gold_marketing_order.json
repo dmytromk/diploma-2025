@@ -1,0 +1,6 @@
+{
+    "webhook_subscription_time_delta": 7,
+    "webhook_card_time_delta": 7,
+    "webhook_apm_time_delta": 7,
+    "webhook_app_time_delta": 7
+}

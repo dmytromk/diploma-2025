@@ -1,0 +1,127 @@
+{
+  "bucket_id": "obrio-data-platform-ad-managers-lake",
+  "source_folder": "ad_manager_spend/tiktok/ad_spends",
+  "lambda_function": "analytics-marketing-cost-tiktok",
+  "move_starting_date": "AUTO",
+  "load_starting_date": "AUTO",
+  "target_table_dataset": "bronze",
+  "target_table_name": "tiktok_ads_manager_spend_event",
+  "target_columns": ["ad_spend_time", "advertiser_id", "advertiser_name", "campaign_id", "campaign_name", "adset_id", "adset_name", "ad_id", "ad_name", "spend", "impressions", "clicks", "country_code", "video_watched_25", "video_watched_50", "video_watched_75", "video_watched_100", "video_watched_2s", "average_video_play", "media_source"],
+  "advertiser_ids": [
+        {
+            "advertiserName": "SIA DIGIBRAND - Nebula Web - Httpool USD",
+            "advertiserId": "7045218057874112514"
+        },
+        {
+            "advertiserName": "SIA DIGIBRAND - Nebula - Httpool USD",
+            "advertiserId": "6791847308997689349"
+        },
+        {
+            "advertiserName": "SIA DIGIBRAND - Nebula AND - Httpool USD",
+            "advertiserId": "6855315136811384838"
+        },
+        {
+            "advertiserName": "SIA DIGIBRAND - Nebula AND2 - Httpool USD",
+            "advertiserId": "6898639579931213825"
+        },
+        {
+            "advertiserName": "SIA DIGIBRAND - Nebula AND3 - Httpool USD",
+            "advertiserId": "7047073977268813825"
+        },
+        {
+            "advertiserName": "SIA DIGIBRAND - Nebula IOS1_Jan21 - Httpool USD",
+            "advertiserId": "6919502135709138946"
+        },
+        {
+            "advertiserName": "SIA DIGIBRAND - Nebula IOS2_Jan21 - Httpool USD",
+            "advertiserId": "6919502910757830657"
+        },
+        {
+            "advertiserName": "SIA DIGIBRAND - Nebula iOS14 - Httpool USD",
+            "advertiserId": "6940622070707388418"
+        },
+        {
+            "advertiserName": "SIA DIGIBRAND - Nebula iOS14 2 - Httpool USD",
+            "advertiserId": "7051904993959510018"
+        },
+        {
+            "advertiserName": "SIA DIGIBRAND - Nebula CAPI - Httpool USD",
+            "advertiserId": "7047596041469706241"
+        },
+        {
+            "advertiserName": "SIA DIGIBRAND - Nebula AND4 - Httpool USD",
+            "advertiserId": "7218543647782993921"
+        },
+        {
+            "advertiserName": "SIA DIGIBRAND - Nebula CAPI Android - Httpool USD",
+            "advertiserId": "7221862608981262338"
+        },
+        {
+            "advertiserName":  "SIA DIGIBRAND - Nebula CAPI Android 2 - Httpool USD",
+            "advertiserId": "7223718417654677506"
+        },
+        {   "advertiserName": "Nebula Web",
+            "advertiserId": "7213379757134643202"
+        },
+        {   "advertiserName": "Nebula Web",
+            "advertiserId": "7228168579894493186"
+        },
+        {   "advertiserName": "SIA DIGIBRAND - Nebula Web5 - Httpool USD",
+            "advertiserId": "7372501038311587841"
+        },
+        {   "advertiserName": "SIA DIGIBRAND - Nebula Web6 - Httpool USD",
+            "advertiserId": "7397841807670902800"
+        },
+        {   "advertiserName": "SIA DIGIBRAND - Nebula Web7 - Httpool USD",
+            "advertiserId": "7397842199448256528"
+        },
+        {   "advertiserName": "SIA DIGIBRAND - Nebula Web8 - Httpool USD",
+            "advertiserId": "7417116364147834897"
+        },
+        {   "advertiserName": "SIA DIGIBRAND - Nebula Web9 - Httpool USD",
+            "advertiserId": "7424096633907970064"
+        },
+        {   "advertiserName": "SIA DIGIBRAND - Nebula Web10 - Httpool USD",
+            "advertiserId": "7424097480230387728"
+        },
+        {   "advertiserName": "SIA DIGIBRAND - Nebula Web11 - Httpool USD",
+            "advertiserId": "7424098779395145744"
+        },
+        {   "advertiserName": "SIA DIGIBRAND - Nebula Web12 - Httpool USD",
+            "advertiserId": "7424099313539792912"
+        },
+        {   "advertiserName": "SIA DIGIBRAND - Nebula Web18 - Httpool USD",
+            "advertiserId": "7444571302972915729"
+        },
+        {   "advertiserName": "SIA DIGIBRAND - Nebula Web17 - Httpool USD",
+            "advertiserId": "7444570816555057168"
+        },
+        {   "advertiserName": "SIA DIGIBRAND - Nebula Web16 - Httpool USD",
+            "advertiserId": "7444570142643830800"
+        },
+        {   "advertiserName": "SIA DIGIBRAND - Nebula Web15 - Httpool USD",
+            "advertiserId": "7444569530976043009"
+        },
+        {   "advertiserName": "SIA DIGIBRAND - Nebula Web14 - Httpool USD",
+            "advertiserId": "7444568921405128705"
+        },
+        {   "advertiserName": "SIA DIGIBRAND - Nebula Web13 - Httpool USD",
+            "advertiserId": "7444568483867885584"
+        },
+        {   "advertiserName": "SIA DIGIBRAND - Nebula Web19 - Httpool USD",
+            "advertiserId": "7444571721300000769"
+        },
+        {   "advertiserName": "SIA DIGIBRAND - Nebula Web4 - Httpool USD",
+            "advertiserId": "7260103540285128706"
+        },
+        {   "advertiserName": "SIA DIGIBRAND - AskNebula Obrio - Httpool USD",
+            "advertiserId": "7486054206991106049"
+        }
+    ],
+  "mappings": {
+    "ad_spends": {
+      "target_table_name": "tiktok_ad_spend",
+      "time_delta":  0
+    }
+  }
+}
