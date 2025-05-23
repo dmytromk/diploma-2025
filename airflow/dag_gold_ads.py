@@ -18,7 +18,7 @@ json_variables_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), f
 with open(json_variables_path, 'r') as j:
 	variables = json.loads(j.read())
 
-with DAG(
+with (DAG(
 		dag_id=dag_id,
 		start_date=datetime(2024, 12, 24),
 		max_active_runs=1,
@@ -32,7 +32,7 @@ with DAG(
 			"on_failure_callback": dag_failure_slack_alert
 		},
 		catchup=False
-) as dag:
+) as dag):
 
 	start_operator = EmptyOperator(task_id="dag_start")
 
@@ -118,7 +118,51 @@ with DAG(
 			autocommit=True
 		)
 
-		create_table_silver_marketing_cost_log >> insert_facebook_data_in_silver_marketing_cost_log
+		insert_tiktok_data_in_silver_marketing_cost_log = SQLExecuteQueryOperator(
+			task_id=f'insert_tiktok_data_in_silver_marketing_cost_log',
+			sql=f"""
+							SET QUERY_GROUP TO 'slow-queue';
+							INSERT INTO silver.marketing_cost_log (
+								event_time, country_code, media_source, advertiser_id, advertiser_name, campaign_id, 
+								campaign_name, adset_id, adset_name, ad_id, ad_name, ad_short_name, impressions, 
+								clicks, spend, currency, video_watched_25, video_watched_50, video_watched_75, 
+								video_watched_100, video_watched_2s, avg_play_time, app_name, platform
+							)
+							SELECT
+								CAST(ad_spend_time AS VARCHAR) AS event_time,
+								CAST(country_code AS VARCHAR) AS country_code,
+								CAST(media_source AS VARCHAR) AS media_source,
+								CAST(advertiser_id AS VARCHAR) AS advertiser_id,
+								CAST(advertiser_name AS VARCHAR) AS advertiser_name,
+								CAST(campaign_id AS VARCHAR) AS campaign_id,
+								CAST(campaign_name AS VARCHAR) AS campaign_name,
+								CAST(adset_id AS VARCHAR) AS adset_id,
+								CAST(adset_name AS VARCHAR) AS adset_name,
+								CAST(ad_id AS VARCHAR) AS ad_id,
+								CAST(ad_name AS VARCHAR) AS ad_name,
+								NULL AS ad_short_name,
+								CAST(impressions AS VARCHAR) AS impressions,
+								CAST(clicks AS VARCHAR) AS clicks,
+								CAST(spend AS VARCHAR) AS spend,
+								CAST(currency AS VARCHAR) AS currency,
+								CAST(video_p25_watched_actions AS VARCHAR) AS video_watched_25,
+								CAST(video_p50_watched_actions AS VARCHAR) AS video_watched_50,
+								CAST(video_p75_watched_actions AS VARCHAR) AS video_watched_75,
+								CAST(video_p100_watched_actions AS VARCHAR) AS video_watched_100,
+								CAST(video_watched_2s AS VARCHAR) AS video_watched_2s,
+								CAST(average_video_play AS VARCHAR) AS avg_play_time,
+								NULL AS app_name,
+								NULL AS platform
+							FROM bronze.tiktok_ads_manager_spend_event
+							WHERE event_time::DATE >= '{variables["tiktok_time_delta"] if variables["tiktok_time_delta"] != 'AUTO' else str(current_date - timedelta(days=15))}';
+						""",
+			split_statements=True,
+			conn_id='aws_redshift_cluster',
+			autocommit=True
+		)
+
+		create_table_silver_marketing_cost_log >> \
+		[insert_facebook_data_in_silver_marketing_cost_log, insert_tiktok_data_in_silver_marketing_cost_log]
 
 	with TaskGroup(group_id="create_gold_dim_ad_group") as create_gold_dim_ad_group:
 		create_silver_marketing_unique_ads = SQLExecuteQueryOperator(
